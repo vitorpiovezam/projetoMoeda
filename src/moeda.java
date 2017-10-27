@@ -9,87 +9,197 @@ public class moeda {
         double numeroLanc;
         double numeroJogos;
         double dinheiroPerdido;
-        double dinheiroGanho=
-        double saldo;
+        double dinheiroGanho=0;
+        double saldo=0;
         boolean cara = false;
         boolean coroa =false;
         double saida=239821321;
         double quantCoroa=0;
-
+        double numeroJogosTotal;
+        int getMenu;
         Random face = new Random();
         Scanner in = new Scanner(System.in);
 
-        while(saida!=2) {
-            faceDaMoeda=0;
-            numeroLanc=0;
-            numeroJogos=0;
-            dinheiroPerdido=0;
-            dinheiroGanho=0;
-            quantCoroa =0;
-            saldo=0;
-            cara = false;
-            coroa =false;
-            saida=0;
 
+        System.out.println("Selecione o metodo");
+        System.out.println("1. Definindo o numero de jogos");
+        System.out.println("2. Até ter o saldo positivo");
+        System.out.print("Escolha ---> ");
+        getMenu = in.nextInt();
 
-            System.out.print("Digite quantas vezes repetir lançamento de moeda -> ");
-            numeroLanc = in.nextDouble();
+        if(getMenu==1) {
+            //Defina o numero de jogos
 
-            System.out.println("Quantos jogos deseja fazer ? -> ");
-            numeroJogos = in.nextDouble();
-
-            dinheiroPerdido = 13 * numeroJogos;
-            System.out.println("Você gastou R$" + dinheiroPerdido);
-            Thread.sleep(2500);
-            for (int j = 0; j <= numeroJogos; j++) {
-
-
-                //Lançamento de moeda
-                loopCoin:
-                for (int i = 0; i <= numeroLanc; i++) {
-
-                    faceDaMoeda = face.nextInt(2);
-
-                    //Cara
-                    if (faceDaMoeda == 0) {
-                        cara = true;
-                        coroa = false;
-                        break loopCoin;
-                    }
-
-                    //Coroa
-                    if (faceDaMoeda == 1) {
-                        cara = false;
-                        coroa = true;
-                        quantCoroa++;
-                    }
-
-
-                }
-                //Fim lançamento de moeda
-
-                System.out.println("FIM DE UM JOGO -> Quantidade de Coroas " + quantCoroa);
-
-
-                if (quantCoroa >= 1) {
-                    dinheiroGanho += (double) Math.pow(2, quantCoroa);
-                    System.out.println("Dinheiro ganho -> " + dinheiroGanho);
-                    if (quantCoroa>30){
-                        System.out.println("********** DEU GRANA PACARAI");
-                        Thread.sleep(10000);
-                    }
-                } else {
-                    System.out.println("Dinheiro ganho -> " + dinheiroGanho);
-                }
-
+            while (saida != 2) {
+                faceDaMoeda = 0;
+                numeroLanc = 0;
+                numeroJogos = 0;
+                dinheiroPerdido = 0;
+                dinheiroGanho = 0;
                 quantCoroa = 0;
+                saldo = 0;
+                cara = false;
+                coroa = false;
+                saida = 0;
 
 
-            }//Fim numero de Jogos
-            saldo = dinheiroGanho - dinheiroPerdido;
-            System.out.println("Fim dos jogos, você ficou saldo " + saldo);
-        System.out.println("Deseja jogar novamente ? \n1.Sim \n2.Não");
-        saida = in.nextInt();
+                System.out.print("Digite quantas vezes repetir lançamento de moeda -> ");
+                numeroLanc = in.nextDouble();
+
+                System.out.println("Quantos jogos deseja fazer ? -> ");
+                numeroJogos = in.nextDouble();
+
+                dinheiroPerdido = 13 * numeroJogos;
+                System.out.println("Você gastou R$" + dinheiroPerdido);
+                Thread.sleep(2500);
+                for (int j = 0; j <= numeroJogos; j++) {
+
+
+                    //Lançamento de moeda
+                    loopCoin:
+                    for (int i = 0; i <= numeroLanc; i++) {
+
+                        faceDaMoeda = face.nextInt(2);
+
+                        //Cara
+                        if (faceDaMoeda == 0) {
+                            cara = true;
+                            coroa = false;
+                            break loopCoin;
+                        }
+
+                        //Coroa
+                        if (faceDaMoeda == 1) {
+                            cara = false;
+                            coroa = true;
+                            quantCoroa++;
+                        }
+
+
+                    }
+                    //Fim lançamento de moeda
+
+                    System.out.println("FIM DE UM JOGO -> Quantidade de Coroas " + quantCoroa);
+
+
+                    if (quantCoroa >= 1) {
+                        dinheiroGanho += (double) Math.pow(2, quantCoroa);
+                        System.out.println("Dinheiro ganho -> " + dinheiroGanho);
+                        if (quantCoroa > 30) {
+                            System.out.println("********** DEU GRANA PACARAI");
+                            Thread.sleep(10000);
+                        }
+                    } else {
+                        System.out.println("Dinheiro ganho -> " + dinheiroGanho);
+                    }
+
+                    quantCoroa = 0;
+
+
+                }//Fim numero de Jogos
+                saldo = dinheiroGanho - dinheiroPerdido;
+                System.out.println("Fim dos jogos, você ficou saldo " + saldo);
+                System.out.println("Deseja jogar novamente ? \n1.Sim \n2.Não");
+                saida = in.nextInt();
+            }
+
+
+        }
+
+
+
+        //Roda até o saldo for positivo
+
+        if(getMenu==2) {
+
+            while (saida != 2) {
+
+                faceDaMoeda = 0;
+                numeroLanc = 0;
+                numeroJogos = 0;
+                dinheiroPerdido = 0;
+                dinheiroGanho = 0;
+                quantCoroa = 0;
+                saldo = 0;
+                cara = false;
+                coroa = false;
+                saida = 0;
+                int precoJogo;
+
+                //Capturando numeros
+
+                System.out.println("Quanto deseja cobrar por jogo ?");
+                precoJogo = in.nextInt();
+                //
+
+                loopJogos:
+                for (double j = 0; j <= 900000000; j++) {
+                    dinheiroPerdido += precoJogo;
+
+                    //Lançamento de moeda
+                    loopCoin:
+                    for (int i = 0; i <= 1000000; i++) {
+
+                        faceDaMoeda = face.nextInt(2);
+
+                        //Cara
+                        if (faceDaMoeda == 0) {
+                            cara = true;
+                            coroa = false;
+                            break loopCoin;
+                        }
+
+                        //Coroa
+                        if (faceDaMoeda == 1) {
+                            cara = false;
+                            coroa = true;
+                            quantCoroa++;
+                        }
+
+
+                    }
+                    //Fim lançamento de moeda
+
+                    System.out.println("\n " + "Moeda lançada -> Quantidade de Coroas " + quantCoroa + "\n");
+
+
+                    if (quantCoroa >= 1) {
+                        dinheiroGanho += (double) Math.pow(2, quantCoroa);
+
+                        //Deu grana bagarai element
+                        if (quantCoroa > 30) {
+                            System.out.println("********** DEU GRANA PACARAI");
+                            Thread.sleep(10000);
+                        }
+
+
+                    }
+
+                    saldo = dinheiroGanho - dinheiroPerdido;
+
+                    System.out.println("Saldo -> " + saldo);
+                    System.out.println("Dinheiro ganho  total -> " + dinheiroGanho);
+                    System.out.println("Dinheiro perdido total -> " + dinheiroPerdido);
+
+                    quantCoroa = 0;
+
+
+                    if (saldo > 100) {
+
+                        numeroJogosTotal = dinheiroPerdido / precoJogo;
+                        System.out.println("\n" + "Numero de Jogos -> " + numeroJogosTotal);
+                        break loopJogos;
+                    }
+
+                    System.out.println("Fim de um jogo");
+                }//Fim numero de Jogos
+
+                System.out.println("Deseja jogar novamente ?");
+                System.out.println("1. Sim");
+                System.out.println("2. Não");
+                saida = in.nextInt();
+            }
+        }
+
         }
     }
-}
