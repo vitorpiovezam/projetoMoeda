@@ -17,9 +17,21 @@ public class moeda {
         double quantCoroa=0;
         double numeroJogosTotal;
         int getMenu;
+        int tui;
+
         Random face = new Random();
         Scanner in = new Scanner(System.in);
 
+        /*
+        System.out.println("Deseja ter resposta gráfica ? ");
+        System.out.println("1. Sim");
+        System.out.println("2. Não");
+        System.out.print("Escolha -> ");
+        tui = in.nextInt();
+        */
+
+        System.out.println(" ");
+        System.out.println(" ");
 
         System.out.println("Selecione o metodo");
         System.out.println("1. Definindo o numero de jogos");
@@ -42,10 +54,13 @@ public class moeda {
                 coroa = false;
                 saida = 0;
 
-
+                System.out.println(" ");
+                System.out.println(" ");
                 System.out.print("Digite quantas vezes repetir lançamento de moeda -> ");
                 numeroLanc = in.nextDouble();
 
+                System.out.println(" ");
+                System.out.println(" ");
                 System.out.println("Quantos jogos deseja fazer ? -> ");
                 numeroJogos = in.nextDouble();
 
@@ -78,19 +93,25 @@ public class moeda {
 
                     }
                     //Fim lançamento de moeda
-
-                    System.out.println("FIM DE UM JOGO -> Quantidade de Coroas " + quantCoroa);
-
+                    //if(tui==1) {
+                        System.out.println("FIM DE UM JOGO -> Quantidade de Coroas " + quantCoroa);
+                    //}
 
                     if (quantCoroa >= 1) {
                         dinheiroGanho += (double) Math.pow(2, quantCoroa);
-                        System.out.println("Dinheiro ganho -> " + dinheiroGanho);
+                        //if(tui==1) {
+                            System.out.println("Dinheiro ganho -> " + dinheiroGanho);
+                        //}
                         if (quantCoroa > 30) {
-                            System.out.println("********** DEU GRANA PACARAI");
+                            //if(tui==1) {
+                                System.out.println("********** DEU GRANA PACARAI");
+                            //}
                             Thread.sleep(10000);
                         }
                     } else {
-                        System.out.println("Dinheiro ganho -> " + dinheiroGanho);
+                        //if(tui==1) {
+                            System.out.println("Dinheiro ganho -> " + dinheiroGanho);
+                        //}
                     }
 
                     quantCoroa = 0;
@@ -98,8 +119,12 @@ public class moeda {
 
                 }//Fim numero de Jogos
                 saldo = dinheiroGanho - dinheiroPerdido;
-                System.out.println("Fim dos jogos, você ficou saldo " + saldo);
-                System.out.println("Deseja jogar novamente ? \n1.Sim \n2.Não");
+
+                    numeroJogosTotal = dinheiroPerdido / 13;
+                    System.out.println("\n" + "Numero de Jogos -> " + numeroJogosTotal);
+                    System.out.println("Fim dos jogos, você ficou saldo " + saldo);
+                    System.out.println("Deseja jogar novamente ? \n1.Sim \n2.Não");
+
                 saida = in.nextInt();
             }
 
@@ -108,7 +133,7 @@ public class moeda {
 
 
 
-        //Roda até o saldo for positivo
+        //Roda até o saldo for positivo *****************************************************************
 
         if(getMenu==2) {
 
@@ -133,12 +158,12 @@ public class moeda {
                 //
 
                 loopJogos:
-                for (double j = 0; j <= 900000000; j++) {
+                for (double j = 0; j <= 2100000000; j++) {
                     dinheiroPerdido += precoJogo;
 
                     //Lançamento de moeda
                     loopCoin:
-                    for (int i = 0; i <= 1000000; i++) {
+                    for (double i = 0; i <= 900000009; i++) {
 
                         faceDaMoeda = face.nextInt(2);
 
@@ -160,16 +185,18 @@ public class moeda {
                     }
                     //Fim lançamento de moeda
 
-                    System.out.println("\n " + "Moeda lançada -> Quantidade de Coroas " + quantCoroa + "\n");
+                    //System.out.println("\n " + "Moeda lançada -> Quantidade de Coroas " + quantCoroa + "\n");
 
 
                     if (quantCoroa >= 1) {
                         dinheiroGanho += (double) Math.pow(2, quantCoroa);
 
                         //Deu grana bagarai element
-                        if (quantCoroa > 30) {
+                        if (quantCoroa > 25) {
+                            System.out.println(quantCoroa);
                             System.out.println("********** DEU GRANA PACARAI");
-                            Thread.sleep(10000);
+                            //2
+                            // Thread.sleep(6000);
                         }
 
 
@@ -177,21 +204,24 @@ public class moeda {
 
                     saldo = dinheiroGanho - dinheiroPerdido;
 
-                    System.out.println("Saldo -> " + saldo);
-                    System.out.println("Dinheiro ganho  total -> " + dinheiroGanho);
-                    System.out.println("Dinheiro perdido total -> " + dinheiroPerdido);
+                    //System.out.println("Saldo -> " + saldo);
+                    //System.out.println("Dinheiro ganho  total -> " + dinheiroGanho);
+                    //System.out.println("Dinheiro perdido total -> " + dinheiroPerdido);
 
                     quantCoroa = 0;
 
 
                     if (saldo > 100) {
-
+                        System.out.println(" ");
                         numeroJogosTotal = dinheiroPerdido / precoJogo;
                         System.out.println("\n" + "Numero de Jogos -> " + numeroJogosTotal);
+                        System.out.println("Dinheiro ganho  total -> " + dinheiroGanho);
+                        System.out.println("Dinheiro perdido total -> " + dinheiroPerdido);
+                        System.out.println("Saldo -> " + saldo);
                         break loopJogos;
                     }
 
-                    System.out.println("Fim de um jogo");
+                    //System.out.println("Fim de um jogo");
                 }//Fim numero de Jogos
 
                 System.out.println("Deseja jogar novamente ?");
