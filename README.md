@@ -1,4 +1,4 @@
-##St. Petersburg paradox simulated in Java
+## St. Petersburg paradox simulated in Java
 
 
 A casino offers a game of chance for a single player in which a fair coin is tossed at each stage. The initial stake starts
