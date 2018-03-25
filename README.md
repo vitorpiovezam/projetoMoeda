@@ -14,4 +14,4 @@ What would be a fair price to pay the casino for entering the game?
 
 ![game equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/390a558e36bf7a52d0bca83b14fcefb16723fee8)
 
-#### Thanks for @felipe8989 to build the most part of code logic o// 
+#### Thanks for [@felipe8989](https://github.com/felipe8989) to build the most part of code logic o// 
